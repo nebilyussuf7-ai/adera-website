@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adera Property Management — AI-Powered Property Management in Ethiopia</title>
+<meta name="description" content="Adera Property Management combines professional property management with AI-powered technology to help property owners maximize returns while giving tenants an exceptional living experience.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230B3D2E%22/><text x=%2250%22 y=%2268%22 font-size=%2260%22 fill=%22%23D4AF37%22 text-anchor=%22middle%22 font-family=%22Georgia,serif%22>A</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-950:#0a2a1f;
+    --green-900:#0d3626;
+    --green-800:#12472f;
+    --gold-500:#cda44a;
+    --gold-400:#dbb968;
+    --charcoal-900:#191a19;
+    --charcoal-800:#242624;
+    --ink:#1c211d;
+    --paper:#faf8f4;
+    --paper-alt:#f1efe8;
+    --line:#e5e0d3;
+    --muted:#6b7368;
+    --radius:14px;
+    --shadow:0 20px 50px -20px rgba(10,42,31,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif; line-height:1.15; font-weight:700; color:var(--charcoal-900);}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-size:.75rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold-500); font-weight:700; margin-bottom:14px; display:block;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 28px; border-radius:999px; font-weight:600; font-size:.95rem;
+    cursor:pointer; border:1px solid transparent; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-gold{background:var(--gold-500); color:var(--green-950); box-shadow:0 10px 30px -10px rgba(205,164,74,.6);}
+  .btn-gold:hover{background:var(--gold-400);}
+  .btn-outline{border-color:rgba(255,255,255,.35); color:#fff;}
+  .btn-outline:hover{background:rgba(255,255,255,.08);}
+  .btn-outline-dark{border-color:var(--charcoal-900); color:var(--charcoal-900);}
+  .btn-outline-dark:hover{background:var(--charcoal-900); color:#fff;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(250,248,244,.85); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Playfair Display',serif; font-weight:700; font-size:1.25rem; color:var(--green-950);}
+  .brand .mark{
+    width:38px; height:38px; border-radius:10px; background:linear-gradient(150deg,var(--green-900),var(--green-950));
+    color:var(--gold-500); display:flex; align-items:center; justify-content:center; font-size:1.15rem; font-weight:800;
+    box-shadow:inset 0 0 0 1px rgba(205,164,74,.4);
+  }
+  .brand small{display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);}
+  nav.links{display:flex; align-items:center; gap:32px;}
+  nav.links a{font-size:.92rem; font-weight:500; color:var(--ink); opacity:.85;}
+  nav.links a:hover{opacity:1; color:var(--green-900);}
+  .nav-cta{display:flex; align-items:center; gap:16px;}
+  .nav-cta .btn{padding:11px 22px; font-size:.85rem;}
+  .menu-toggle{display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--green-950);}
+
+  /* HERO */
+  .hero{
+    position:relative; overflow:hidden;
+    background:radial-gradient(1200px 600px at 80% -10%, rgba(205,164,74,.18), transparent 60%), linear-gradient(180deg,var(--green-950),var(--green-900) 70%, var(--green-800));
+    color:#fff; padding:110px 0 90px;
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0; opacity:.10; pointer-events:none;
+    background-image: radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
+    background-size:26px 26px;
+  }
+  .hero .wrap{position:relative; z-index:1;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center;}
+  .hero h1{font-size:clamp(2.3rem,4.4vw,3.6rem); color:#fff; margin-bottom:22px;}
+  .hero p.lead{font-size:1.08rem; color:rgba(255,255,255,.78); max-width:520px; margin-bottom:34px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px;}
+  .hero-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; border-top:1px solid rgba(255,255,255,.15); padding-top:28px;}
+  .hero-stats div b{display:block; font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--gold-500);}
+  .hero-stats div span{font-size:.78rem; color:rgba(255,255,255,.65);}
+  .hero-card{
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); border-radius:20px;
+    padding:28px; backdrop-filter:blur(6px);
+  }
+  .hero-card .tag{font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-500); font-weight:700;}
+  .hero-card h3{color:#fff; font-size:1.3rem; margin:10px 0 18px;}
+  .metric-row{display:flex; justify-content:space-between; padding:14px 0; border-top:1px solid rgba(255,255,255,.12);}
+  .metric-row:first-of-type{border-top:none;}
+  .metric-row span{color:rgba(255,255,255,.65); font-size:.88rem;}
+  .metric-row b{color:#fff; font-family:'Playfair Display',serif;}
+
+  section{padding:96px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.5rem); margin-bottom:14px;}
+  .section-head p{color:var(--muted); font-size:1.02rem;}
+  .section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+
+  /* WHY CHOOSE */
+  .grid-8{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .feature-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:28px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .feature-card:hover{transform:translateY(-4px); box-shadow:var(--shadow);}
+  .feature-card .icon{
+    width:46px; height:46px; border-radius:12px; background:linear-gradient(150deg,var(--green-900),var(--green-950));
+    color:var(--gold-500); display:flex; align-items:center; justify-content:center; margin-bottom:18px; font-size:1.2rem;
+  }
+  .feature-card h4{font-size:1.05rem; margin-bottom:8px; color:var(--charcoal-900);}
+  .feature-card p{font-size:.9rem; color:var(--muted);}
+
+  /* AI TECH */
+  .tech{
+    background:linear-gradient(180deg,var(--charcoal-900),#101210); color:#fff;
+  }
+  .tech .section-head p{color:rgba(255,255,255,.65);}
+  .tech .section-head h2{color:#fff;}
+  .tech-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .tech-list{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;}
+  .pill{border:1px solid rgba(255,255,255,.2); border-radius:999px; padding:8px 16px; font-size:.82rem; color:rgba(255,255,255,.85);}
+  .dashboard-mock{
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.14); border-radius:20px; padding:26px;
+  }
+  .dashboard-mock .top{display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;}
+  .dashboard-mock .top span{font-size:.78rem; color:rgba(255,255,255,.55); text-transform:uppercase; letter-spacing:.08em;}
+  .dash-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px;}
+  .dash-stats div{background:rgba(255,255,255,.05); border-radius:12px; padding:16px;}
+  .dash-stats b{display:block; font-family:'Playfair Display',serif; color:var(--gold-500); font-size:1.4rem;}
+  .dash-stats span{font-size:.75rem; color:rgba(255,255,255,.55);}
+  .ai-note{background:rgba(205,164,74,.1); border:1px solid rgba(205,164,74,.35); border-radius:14px; padding:16px 18px; font-size:.88rem; color:rgba(255,255,255,.85);}
+
+  /* SERVICES */
+  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .service-card{
+    border:1px solid var(--line); border-radius:var(--radius); padding:30px; background:var(--paper-alt);
+  }
+  .service-card h4{font-size:1.1rem; margin-bottom:10px;}
+  .service-card p{color:var(--muted); font-size:.92rem;}
+  .service-card .num{font-family:'Playfair Display',serif; color:var(--gold-500); font-size:1.1rem; margin-bottom:10px; display:block;}
+
+  /* PROCESS */
+  .process{background:var(--paper-alt);}
+  .steps{display:grid; grid-template-columns:repeat(5,1fr); gap:20px; counter-reset:step;}
+  .step{position:relative; padding-top:8px;}
+  .step .idx{
+    font-family:'Playfair Display',serif; font-size:2.1rem; color:var(--gold-500); display:block; margin-bottom:14px;
+  }
+  .step h4{font-size:.98rem; margin-bottom:8px;}
+  .step p{font-size:.85rem; color:var(--muted);}
+  .step:not(:last-child)::after{
+    content:""; position:absolute; top:22px; left:60%; width:80%; height:1px; background:var(--line);
+  }
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .about-grid ul{list-style:none; margin-top:20px; display:grid; gap:12px;}
+  .about-grid li{display:flex; gap:10px; font-size:.95rem; color:var(--ink);}
+  .about-grid li b{color:var(--green-900);}
+  .about-photo{
+    aspect-ratio:4/3; border-radius:20px; background:linear-gradient(150deg,var(--green-900),var(--green-950));
+    position:relative; overflow:hidden; box-shadow:var(--shadow);
+  }
+  .about-photo::before{
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(205,164,74,.35), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(255,255,255,.08), transparent 40%);
+  }
+  .about-photo span{
+    position:absolute; bottom:24px; left:24px; color:#fff; font-family:'Playfair Display',serif; font-size:1.3rem;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testimonial{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:28px;}
+  .testimonial p{font-style:italic; color:var(--ink); margin-bottom:18px; font-size:.95rem;}
+  .testimonial .who{font-weight:600; font-size:.88rem; color:var(--green-900);}
+  .stars{color:var(--gold-500); margin-bottom:14px; font-size:.9rem;}
+
+  /* FAQ */
+  .faq{max-width:820px; margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line); padding:22px 0;}
+  .faq-q{display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-weight:600; font-size:1rem;}
+  .faq-q .plus{font-size:1.3rem; color:var(--gold-500); transition:transform .2s ease;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
+  .faq-a p{padding-top:14px; color:var(--muted); font-size:.92rem;}
+  .faq-item.open .faq-a{max-height:200px;}
+
+  /* CONTACT */
+  .contact{background:linear-gradient(180deg,var(--green-950),var(--green-900)); color:#fff;}
+  .contact .section-head h2{color:#fff;}
+  .contact .section-head p{color:rgba(255,255,255,.7);}
+  .contact-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:60px;}
+  .contact-info{display:flex; flex-direction:column; gap:22px;}
+  .contact-row{display:flex; gap:14px; align-items:flex-start;}
+  .contact-row .ico{
+    width:40px; height:40px; border-radius:10px; background:rgba(205,164,74,.15); border:1px solid rgba(205,164,74,.4);
+    display:flex; align-items:center; justify-content:center; color:var(--gold-500); flex-shrink:0;
+  }
+  .contact-row b{display:block; font-size:.95rem; margin-bottom:2px;}
+  .contact-row span, .contact-row a{color:rgba(255,255,255,.7); font-size:.88rem;}
+  form{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); border-radius:20px; padding:30px; display:grid; gap:16px;}
+  form .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  label{font-size:.8rem; color:rgba(255,255,255,.7); margin-bottom:6px; display:block;}
+  input, textarea{
+    width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.06); color:#fff; font-family:inherit; font-size:.92rem;
+  }
+  input::placeholder, textarea::placeholder{color:rgba(255,255,255,.4);}
+  textarea{resize:vertical; min-height:110px;}
+  .form-note{font-size:.78rem; color:rgba(255,255,255,.5);}
+
+  footer{background:var(--charcoal-900); color:rgba(255,255,255,.6); padding:56px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,.1);}
+  .footer-grid h5{color:#fff; font-size:.85rem; letter-spacing:.06em; text-transform:uppercase; margin-bottom:16px;}
+  .footer-grid a{display:block; margin-bottom:10px; font-size:.88rem; color:rgba(255,255,255,.6);}
+  .footer-grid a:hover{color:var(--gold-500);}
+  .footer-brand p{font-size:.88rem; max-width:280px; margin:14px 0 18px;}
+  .social-row{display:flex; gap:10px;}
+  .social-row a{
+    width:34px; height:34px; border-radius:50%; border:1px solid rgba(255,255,255,.2);
+    display:flex; align-items:center; justify-content:center; font-size:.8rem; margin-bottom:0;
+  }
+  .bottom-bar{display:flex; justify-content:space-between; padding-top:24px; font-size:.8rem; flex-wrap:wrap; gap:10px;}
+
+  .wa-float{
+    position:fixed; bottom:26px; right:26px; z-index:200; background:#25D366; color:#fff;
+    width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 30px -8px rgba(37,211,102,.6); font-size:1.5rem;
+  }
+
+  @media (max-width: 980px){
+    .hero-grid, .tech-grid, .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .grid-8{grid-template-columns:repeat(2,1fr);}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr); row-gap:32px;}
+    .step::after{display:none;}
+    .testimonials-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    nav.links{display:none;}
+    .menu-toggle{display:block;}
+    .hero-stats{grid-template-columns:repeat(2,1fr); row-gap:18px;}
+  }
+  @media (max-width: 560px){
+    section{padding:64px 0;}
+    .grid-8{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    form .row2{grid-template-columns:1fr;}
+    .hero-actions{flex-direction:column;}
+    .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="#" class="brand"><span class="mark">A</span> Adera Property <small style="margin-left:2px;">AI-powered management</small></a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#technology">Technology</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-outline-dark">Free Consultation</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Ethiopia's AI-Powered Property Management Company</span>
+      <h1>Smarter Property Management Starts Here.</h1>
+      <p class="lead">Adera Property Management combines professional property management with AI-powered technology to help property owners maximize returns while giving tenants an exceptional living experience.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-gold">Get a Free Consultation</a>
+        <a href="#services" class="btn btn-outline">Explore Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>24/7</b><span>Tenant support and owner visibility</span></div>
+        <div><b>AI</b><span>Assisted communication and reporting</span></div>
+        <div><b>100%</b><span>Transparent digital documentation</span></div>
+        <div><b>Addis</b><span>Local expertise with global standards</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <span class="tag">Owner Dashboard · Live Insight</span>
+      <h3>Property Performance</h3>
+      <div class="metric-row"><span>Rental income</span><b>+18%</b></div>
+      <div class="metric-row"><span>Maintenance requests</span><b>04 open</b></div>
+      <div class="metric-row"><span>Occupancy health</span><b>96%</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Why Choose Adera</span>
+      <h2>Premium management, measurable transparency, and modern technology.</h2>
+      <p>Adera gives property owners the confidence of professional local expertise with the speed and visibility of an AI-supported operating system.</p>
+    </div>
+    <div class="grid-8">
+      <div class="feature-card"><div class="icon">◆</div><h4>AI-Assisted Property Management</h4><p>Smarter workflows for communication, follow-ups, and recurring owner reporting.</p></div>
+      <div class="feature-card"><div class="icon">▤</div><h4>Transparent Financial Reporting</h4><p>Clear income, expenses, vacancies, and monthly property performance views.</p></div>
+      <div class="feature-card"><div class="icon">◧</div><h4>Real-Time Owner Dashboard</h4><p>Owners can monitor income, requests, documents, and reports remotely.</p></div>
+      <div class="feature-card"><div class="icon">☎</div><h4>24/7 Tenant Support</h4><p>Responsive tenant service for smoother occupancy and retention.</p></div>
+      <div class="feature-card"><div class="icon">🔧</div><h4>Professional Maintenance Coordination</h4><p>Preventive checks, emergency response, and trusted vendor coordination.</p></div>
+      <div class="feature-card"><div class="icon">🔒</div><h4>Secure Digital Documentation</h4><p>Leases, reports, receipts, and property files organized in one place.</p></div>
+      <div class="feature-card"><div class="icon">🇪🇹</div><h4>Trusted Local Expertise</h4><p>Built for Ethiopian owners, tenants, markets, and operating realities.</p></div>
+      <div class="feature-card"><div class="icon">✦</div><h4>Premium Customer Experience</h4><p>Elegant, responsive service designed to make ownership feel effortless.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tech" id="technology">
+  <div class="wrap">
+    <div class="tech-grid">
+      <div>
+        <span class="eyebrow">AI Technology</span>
+        <h2>The Future of Property Management in Ethiopia</h2>
+        <p style="margin-top:14px;">Adera integrates artificial intelligence into property management to provide faster communication, smarter maintenance coordination, automated reporting, and greater visibility for property owners.</p>
+        <div class="tech-list">
+          <span class="pill">Tenant Portal</span>
+          <span class="pill">Maintenance Tracking</span>
+          <span class="pill">Financial Reports</span>
+          <span class="pill">Digital Documentation</span>
+        </div>
+        <div class="ai-note" style="margin-top:26px;">AI Assistant automates routine updates, triages tenant requests, and prepares owner-ready summaries — with the Adera team always in control.</div>
+      </div>
+      <div class="dashboard-mock">
+        <div class="top"><span>Owner Dashboard</span><span>Live</span></div>
+        <div class="dash-stats">
+          <div><b>+18%</b><span>Rental income</span></div>
+          <div><b>04</b><span>Maintenance requests</span></div>
+          <div><b>96%</b><span>Occupancy health</span></div>
+        </div>
+        <div class="ai-note">Property Performance Analytics · Updated in real time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Services</span>
+      <h2>Complete property management for residential and commercial portfolios.</h2>
+      <p>From tenant placement to financial reporting, Adera provides the operating layer owners need to protect assets, improve occupancy, and serve tenants well.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card"><span class="num">01</span><h4>Residential Property Management</h4><p>Rent collection, tenant screening, lease management, inspections, and owner reporting for apartments, villas, and family homes.</p></div>
+      <div class="service-card"><span class="num">02</span><h4>Commercial Property Management</h4><p>Professional oversight for office buildings, retail centers, and mixed-use properties with organized tenant and vendor coordination.</p></div>
+      <div class="service-card"><span class="num">03</span><h4>Maintenance Management</h4><p>Preventive maintenance, emergency repairs, work-order tracking, and vendor coordination designed to protect asset value.</p></div>
+      <div class="service-card"><span class="num">04</span><h4>Property Marketing</h4><p>Professional listings, photography coordination, qualified tenant placement, and faster vacancy reduction.</p></div>
+      <div class="service-card"><span class="num">05</span><h4>AI Owner Dashboard</h4><p>Monitor rental income, expenses, vacancies, maintenance requests, documents, and reports from anywhere.</p></div>
+      <div class="service-card"><span class="num">06</span><h4>Tenant Portal</h4><p>Tenants can submit maintenance requests, access lease documents, receive notifications, and reach management directly.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">How It Works</span>
+      <h2>A clear path from consultation to effortless ownership.</h2>
+      <p>Adera combines structured onboarding with ongoing professional management, so every owner knows what happens next.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="idx">01</span><h4>Schedule a Consultation</h4><p>Tell us about your property and goals.</p></div>
+      <div class="step"><span class="idx">02</span><h4>Sign the Management Agreement</h4><p>Clear fees, thresholds, and terms.</p></div>
+      <div class="step"><span class="idx">03</span><h4>Property Onboarding</h4><p>Inspection, documentation, and setup.</p></div>
+      <div class="step"><span class="idx">04</span><h4>AI Platform Activation</h4><p>Dashboard and tenant portal go live.</p></div>
+      <div class="step"><span class="idx">05</span><h4>Ongoing Professional Management</h4><p>Rent, maintenance, and reporting — handled.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo"><span>Adera — Addis Ababa</span></div>
+    <div>
+      <span class="eyebrow">About Us</span>
+      <h2>Modern Property Management Built for Ethiopia</h2>
+      <p style="margin-top:14px; color:var(--muted);">Adera is a technology-driven property management company focused on transparency, efficiency, and customer service. We help Ethiopian property owners manage residential and commercial assets with reliable operations, clear reporting, and a tenant experience designed for long-term trust.</p>
+      <ul>
+        <li><b>✓</b> Technology-led owner visibility</li>
+        <li><b>✓</b> Professional tenant and vendor coordination</li>
+        <li><b>✓</b> Local market insight with global service standards</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Testimonials</span>
+      <h2>Trusted by property owners and tenants.</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial"><div class="stars">★★★★★</div><p>"Adera helped us move from scattered calls and spreadsheets to clear monthly reporting. I always know what is happening with my property."</p><div class="who">Mekdes A., Apartment Owner</div></div>
+      <div class="testimonial"><div class="stars">★★★★★</div><p>"Maintenance requests are easy to submit, and the team communicates professionally. It feels much more organized than what I was used to."</p><div class="who">Daniel T., Tenant</div></div>
+      <div class="testimonial"><div class="stars">★★★★★</div><p>"The reporting is transparent and the team understands Addis Ababa's commercial property market. Adera gives us confidence."</p><div class="who">Selamawit G., Office Building Owner</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--paper-alt);">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">How much does property management cost? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Pricing depends on property type, unit count, service scope, and reporting needs. Adera provides a clear proposal after consultation.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How often are owner reports provided? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Owners receive regular financial and operational reporting, with dashboard visibility for income, expenses, vacancies, and maintenance updates.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How does the AI platform work? <span class="plus">+</span></div>
+        <div class="faq-a"><p>The platform supports faster communication, smarter maintenance routing, automated summaries, and clearer owner reporting while the Adera team remains in control.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I monitor my property remotely? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Yes. Owners can monitor key property information remotely through digital reports and dashboard-style visibility.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How are maintenance requests handled? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Tenants submit requests, Adera coordinates response, tracks progress, and keeps owners informed about cost, urgency, and resolution.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">Contact</span>
+      <h2>Let's make your property easier to own and manage.</h2>
+      <p style="margin-top:14px;">Book a consultation with Adera Property Management in Addis Ababa and see how professional management and AI-powered visibility can support your property goals.</p>
+      <div class="contact-info" style="margin-top:32px;">
+        <div class="contact-row"><div class="ico">✆</div><div><b>Phone</b><a href="tel:+251911022252">+251 911 022 252</a><br><a href="tel:+251947317731">+251 947 317 731</a></div></div>
+        <div class="contact-row"><div class="ico">✉</div><div><b>Email</b><a href="mailto:info@aderaproperty.com">info@aderaproperty.com</a></div></div>
+        <div class="contact-row"><div class="ico">⌂</div><div><b>Office</b><span>Kera, Medina Building, Addis Ababa, Ethiopia</span></div></div>
+        <div class="contact-row"><div class="ico">◎</div><div><b>WhatsApp</b><a href="https://wa.me/251911022252" target="_blank" rel="noopener">Chat with us</a></div></div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); this.reset(); document.getElementById('form-thanks').style.display='block';">
+      <div class="row2">
+        <div><label>Name</label><input type="text" placeholder="Your name" required></div>
+        <div><label>Email</label><input type="email" placeholder="you@email.com" required></div>
+      </div>
+      <div><label>Message</label><textarea placeholder="Tell us about your property..." required></textarea></div>
+      <button type="submit" class="btn btn-gold">Send Consultation Request</button>
+      <p class="form-note" id="form-thanks" style="display:none; color:var(--gold-400);">Thank you — we'll be in touch shortly. You can also reach us directly on WhatsApp or by email above.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand" style="color:#fff;"><span class="mark">A</span> Adera Property Management</div>
+        <p>Smarter Property Management. Powered by AI.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="TikTok">♪</a>
+        </div>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#process">How It Works</a>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <a href="#services">Residential</a>
+        <a href="#services">Commercial</a>
+        <a href="#technology">AI Platform</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="mailto:info@aderaproperty.com">info@aderaproperty.com</a>
+        <a href="tel:+251911022252">+251 911 022 252</a>
+        <a href="#contact">Addis Ababa, Ethiopia</a>
+      </div>
+    </div>
+    <div class="bottom-bar wrap" style="padding-left:0;padding-right:0;">
+      <span>© 2026 Adera Property Management. All rights reserved.</span>
+      <span>Addis Ababa, Ethiopia</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/251911022252" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">◎</a>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
